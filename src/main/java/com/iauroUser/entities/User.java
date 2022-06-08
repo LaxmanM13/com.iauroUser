@@ -1,10 +1,23 @@
 package com.iauroUser.entities;
 
-public class User {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-    private int id;
-    private String name;
-    private int age;
+@Document(collection="user")
+public class User {
+     @Id
+      String _id;
+     int id;
+      String name;
+      int age;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public int getId() {
         return id;
@@ -28,5 +41,15 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "_id='" + _id + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

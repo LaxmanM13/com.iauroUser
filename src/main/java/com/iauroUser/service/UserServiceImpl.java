@@ -3,10 +3,14 @@ package com.iauroUser.service;
 import com.iauroUser.entities.User;
 import com.iauroUser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 
@@ -19,9 +23,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(int id) {
-        return userRepository.findById(id).get();
+    public User getUser(String id) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new Exception("User not found");
+        }
+
+
     }
-
-
 }
+
+
+
+
