@@ -11,7 +11,7 @@
 	<groupId>com.iauroUser</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>com.iauroUser</name>
+	<name>com.iaurouser</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

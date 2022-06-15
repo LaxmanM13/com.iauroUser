@@ -1,22 +1,24 @@
-package com.iauroUser.Controller;
+package com.iaurouser.controller;
 
-import com.iauroUser.entities.User;
-import com.iauroUser.service.UserService;
+import com.iaurouser.entities.User;
+import com.iaurouser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
+
+    public UserController(UserService userService)
+    {
+        this.userService=userService;
+    }
 
     @GetMapping("/users")
     public List<User> getAllUsers()
@@ -24,9 +26,9 @@ public class UserController {
         return this.userService.getAllUser();
     }
 
-    @GetMapping("/users/{id}")
-    public User getUser(@PathVariable("id") String id) throws Exception {
-        return this.userService.getUser(id);
+    @GetMapping("/users/{name}")
+    public User getUser(@PathVariable("name") String name)  {
+        return this.userService.getUser(name);
     }
 
 
